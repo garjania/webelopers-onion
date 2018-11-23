@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+    <link rel="stylesheet" href="https://semantic-ui.com/dist/semantic.min.css">
+    <meta charset="UTF-8">
+    <title>Sign Up!</title>
+</head>
+<body>
+<style>
+    .dis {
+        margin: 8%;
+        margin-right: 40%;
+        margin-top: 1%;
+        margin-left: 3.5%;
+    }
+</style>
+<style>
+    .nav-dis {
+        margin: 1.5%;
+        margin-top: 0.3%;
+    }
+</style>
+<div class="ui secondary pointing menu" id="id_navbar">
+        <a class="item" id="id_navbar_home" href="/">
+            Home
+        </a>
+        <a class="active item" id="id_navbar_signup" href="">
+            Sign up
+        </a>
+        {% if logged %}
+            <a class="item" id="id_navbar_logout" href="/logout">
+                Log out
+            </a>
+            <a class="item" id="id_navbar_profile" href="/user">
+                User Profile
+            </a>
+        {% else %}
+            <a class="item" id="id_navbar_login" href="/sign_in">
+                Log in
+            </a>
+        {% endif %}
+        <a class="item" id="id_navbar_contact_us" href="/contact_us">
+            Contact Us
+        </a>
+</div>
+<div class="dis">
+    <form class="ui form" action="." method="post">{% csrf_token %}
+        <div class="field">
+            <label>First Name</label>
+            <input type="text" name="first-name" id="id_first_name" placeholder="First Name">
+        </div>
+        <div class="field">
+            <label>Last Name</label>
+            <input type="text" name="last-name" id="id_last_name" placeholder="Last Name">
+        </div>
+        <div class="field">
+            <label>User Name</label>
+            <input type="text" name="user-name" id="id_username" placeholder="User name">
+        </div>
+        <div class="field">
+            <label>Email Address</label>
+            <input type="text" name="email" id="id_email" placeholder="Email Address">
+        </div>
+        <div class="field">
+            <label>Password</label>
+            <input type="password" name="password" id="id_password1" placeholder="Password">
+        </div>
+        <div class="field">
+            <label>Repeat Password</label>
+            <input type="password" name="repeat-password" id="id_password2" placeholder="Repeat Password">
+        </div>
+            <div class="inline fields">
+        <div class="field">
+          <div class="ui radio checkbox">
+            <input type="radio" name="professor" id="id_type_0" checked="" tabindex="0" class="hidden">
+            <label>Professor</label>
+          </div>
+        </div>
+        <div class="field">
+          <div class="ui radio checkbox">
+            <input type="radio" name="student" id="id_type_1" tabindex="0" class="hidden">
+            <label>Student</label>
+          </div>
+        </div>
+      </div>
+        <button class="ui button" type="submit" id="id_submit">Submit</button>
+        <div class="ui form">
+    </form>
+</div>
+{% if error %}
+        <div class="ui error message">
+        <div class="header" dir="rtl">کاربری با نام کاربری وارد شده وجود دارد</div>
+        </div>
+{% endif %}
+{% if error2 %}
+        <div class="ui error message">
+        <div class="header" dir="rtl">کاربری با ایمیل وارد شده وجود دارد</div>
+        </div>
+{% endif %}
+{% if error3 %}
+        <div class="ui error message">
+        <div class="header" dir="rtl">گذرواژه و تکرار گذرواژه یکسان نیستند</div>
+        </div>
+{% endif %}
+</body>
+<script src="https://semantic-ui.com/dist/semantic.min.js"></script>
+</html>

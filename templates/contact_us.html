@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="stylesheet" href="https://semantic-ui.com/dist/semantic.min.css">
+    <meta charset="UTF-8">
+    <title>Contact us!</title>
+</head>
+<body>
+<style>
+    .message{
+        margin: 1.5%;
+        margin-top: 0.3%;
+    }
+</style>
+<div class="ui secondary pointing menu" id="id_navbar">
+        <a class="item" id="id_navbar_home" href="/">
+            Home
+        </a>
+        <a class="item" id="id_navbar_signup" href="/sign_up">
+            Sign up
+        </a>
+        {% if logged %}
+            <a class="right" id="id_navbar_logout" href="/logout">
+                Log out
+            </a>
+            <a class="item" id="id_navbar_profile" href="/user">
+                User Profile
+            </a>
+        {% else %}
+            <a class="item" id="id_navbar_login" href="/sign_in">
+                Log in
+            </a>
+        {% endif %}
+        <a class="active item" id="id_navbar_contact_us" href="">
+            Contact Us
+        </a>
+</div>
+<form action="." method="post">{% csrf_token %}
+    <div class="ui form" style="margin-top: 0.5%; margin-left: 3%;">
+        <div class="required field" style="margin-right: 75%;">
+            <label>Title</label>
+            <input type="text" name = "title" id="id_title" placeholder="Title">
+        </div>
+        <div class="required field" style="margin-right: 50%">
+            <label>Text</label>
+            <textarea id="id_text" name = "text" id="id_text" rows="5"></textarea>
+        </div>
+        <div class="field" name = "email" style="margin-right: 75%">
+            <label>Email</label>
+            <input type="email" id="id_email" placeholder="Email">
+        </div>
+        <button class="ui button" type="submit" id="id_submit">Submit</button>
+    </div>
+</form>
+{% if error %}
+        <div class="ui error message">
+        <div class="header" dir="rtl">ورودی اشتباه است</div>
+        </div>
+{% endif %}
+{% if succ %}
+  <div class="ui success message">
+    <div class="header" dir="rtl">درخواست شما ثبت شد</div>
+  </div>
+{% endif %}
+<script src="https://semantic-ui.com/dist/semantic.min.js"></script>
+</body>
+</html>

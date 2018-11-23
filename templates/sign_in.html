@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+    <link rel="stylesheet" href="https://semantic-ui.com/dist/semantic.min.css">
+    <meta charset="UTF-8">
+    <title>Sign In!</title>
+</head>
+<body>
+<style>
+    .dis {
+        margin: 8%;
+        margin-right: 60%;
+        margin-top: 1%;
+        margin-left: 3.5%;
+    }
+</style>
+<style>
+    .nav-dis {
+        margin: 1.5%;
+        margin-top: 0.3%;
+    }
+</style>
+<div class="ui secondary pointing menu" id="id_navbar">
+        <a class="item" id="id_navbar_home" href="/">
+            Home
+        </a>
+        <a class="item" id="id_navbar_signup" href="/sign_up">
+            Sign up
+        </a>
+        {% if logged %}
+            <a class="item" id="id_navbar_logout" href="/logout">
+                Log out
+            </a>
+            <a class="item" id="id_navbar_profile" href="/user">
+                User Profile
+            </a>
+        {% else %}
+            <a class="active item" id="id_navbar_login" href="">
+                Log in
+            </a>
+        {% endif %}
+        <a class="item" id="id_navbar_contact_us" href="/contact_us">
+            Contact Us
+        </a>
+</div>
+<div class="dis">
+    <form class="ui form" action="." method="post">{% csrf_token %}
+        <div class="field">
+            <label>User Name</label>
+            <input type="text" name="user-name" id="id_username" placeholder="User name">
+        </div>
+        <div class="field">
+            <label>Password</label>
+            <input type="password" name="password" id="id_password" placeholder="Password">
+        </div>
+        <button class="ui button" type="submit" id="id_submit">Submit</button>
+    </form>
+    {% if error %}
+        <div class="ui error message">
+        <div class="header" >نام کاربری یا گذرواژه غلط است</div>
+        </div>
+    {% endif %}
+</div>
+</body>
+<script src="https://semantic-ui.com/dist/semantic.min.js"></script>
+</html>

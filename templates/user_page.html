@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="stylesheet" href="https://semantic-ui.com/dist/semantic.min.css">
+    <meta charset="UTF-8">
+    <title>User Profile</title>
+</head>
+<body>
+<style>
+    .nav-dis {
+        margin: 1.5%;
+        margin-top: 0.3%;
+    }
+</style>
+<div id="id_navbar" class="nav-dis">
+    <div class="ui secondary pointing menu" id="id_navbar">
+        <a class="item" id="id_navbar_home" href="/">
+            Home
+        </a>
+        <a class="item" id="id_navbar_signup" href="/sign_up">
+            Sign up
+        </a>
+        {% if logged %}
+            <a class="item" id="id_navbar_logout" href="/logout">
+                Log out
+            </a>
+            <a class="active item" id="id_navbar_profile" href="">
+                User Profile
+            </a>
+        {% else %}
+            <a class="item" id="id_navbar_login" href="/sign_in">
+                Log in
+            </a>
+        {% endif %}
+        <a class="item" id="id_navbar_contact_us" href="/contact_us">
+            Contact Us
+        </a>
+    </div>
+    <div class="ui segment">
+        <p dir="rtl">به سامانه استادجو خوش آمدید</p>
+    </div>
+</div>
+<div class="ui card" style="margin: 2%;">
+    <div class="content">
+        <a class="header" id="id_first_name">{{ name }}</a>
+        <div class="description" id="id_last_name">
+            {{ lastname }}
+        </div>
+        <div class="id_username">
+            {{ username }}
+        </div>
+    </div>
+</div>
+<a href="/edit" id="id_edit_profile"><button class="ui button" >Edit Profile</button></a>
+<script src="https://semantic-ui.com/dist/semantic.min.js"></script>
+</body>
+</html>
